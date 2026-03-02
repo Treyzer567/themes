@@ -45,7 +45,7 @@ themes/
 2. Paste the contents of `homarr-desktop-theme.css` or `homarr-mobile-theme.css`
 3. Save
 
-> You will need to make a desktop board and a mobile board to each one respectively.
+> You will need to make a desktop board and a mobile board to apply each one respectively.
 
 ### BookStack
 
@@ -64,3 +64,15 @@ themes/
 1. Go to **Account Settings → Appearance**
 2. Paste the contents of `immich-theme.css` into the custom CSS field
 3. Save
+
+---
+
+## External Projects
+
+| Project | Description |
+|---------|-------------|
+| [Jellyfin](https://github.com/jellyfin/jellyfin) | Open source media server |
+| [Homarr](https://github.com/homarr-labs/homarr) | Self-hosted dashboard |
+| [BookStack](https://github.com/BookStackApp/BookStack) | Self-hosted wiki and documentation platform |
+| [Filebrowser Quantum](https://github.com/gtsteffaniak/filebrowser) | Self-hosted web file manager |
+| [Immich](https://github.com/immich-app/immich) | Self-hosted photo library |
