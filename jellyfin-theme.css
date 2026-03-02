@@ -1,0 +1,332 @@
+@import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/ElegantFin-jellyfin-theme-build-latest-minified.css");
+
+/* ── DESIGN TOKENS ─────────────────────────────────────────────────────────── */
+:root {
+    --darkerGradientPoint:        #0a0a12;
+    --darkerGradientPointAlpha:   rgba(10,10,18,.85);
+    --lighterGradientPoint:       #12121c;
+    --lighterGradientPointAlpha:  rgba(18,18,28,.85);
+    --headerColor:                rgba(18,18,28,.7);
+    --drawerColor:                rgba(18,18,28,.9);
+    --borderColor:                rgba(255,255,255,.1);
+    --darkerBorderColor:          rgba(255,255,255,.05);
+    --lighterBorderColor:         rgba(255,255,255,.2);
+    --selectorBackgroundColor:    #1a1a28;
+    --selectorBackgroundColorAlpha: rgba(26,26,40,.5);
+    --activeColorAlpha:           rgba(79,172,254,.9);
+    --activeColor:                #4facfe;
+    --uiAccentColor:              #4facfe;
+    --tableBodyColor:             rgba(18,18,28,.6);
+    --btnMiniPlayColor:           #3ba55d;
+    --btnMiniPlayBorderColor:     #3ba55d;
+    --btnDeleteColor:             #ed4245;
+    --btnDeleteBorderColor:       #ed4245;
+    --btnSubmitColor:             #4facfe;
+    --btnSubmitBorderColor:       #8066e5;
+    --checkboxCheckedBgColor:     #4facfe;
+    --highlightOutlineColor:      #8066e5;
+    --textColor:                  #e6e6e6;
+    --dimTextColor:               #b3b3b3;
+    --backgroundGradient:         linear-gradient(0deg,#0a0a12 35%,#12121c);
+    --cardBackgroundGradient:     linear-gradient(0deg,#0a0a12 25%,#12121c);
+    --headerColorGradient:        linear-gradient(180deg,rgba(18,18,28,.95) 30%,55%,transparent 90%);
+    --cardFooterGradient:         linear-gradient(0deg,rgb(0 0 0 / 90%) 40%,transparent);
+
+    /* Overlay button sizing — override per breakpoint below */
+    --overlay-btn-size: 40px;
+}
+
+/* ── GLOBAL HIDES ───────────────────────────────────────────────────────────── */
+.dashboardFooter::after,
+.verticalSection.section0 > .sectionTitle { display: none !important; }
+
+/* ── NAV / LIST ITEMS ────────────────────────────────────────────────────────── */
+.navMenuOption,
+.listItem,
+.paperList .listItem {
+    background:    rgba(26,26,40,.3) !important;
+    border:        1px solid rgba(255,255,255,.08) !important;
+    box-shadow:    0 2px 8px rgba(0,0,0,.2);
+    margin:        .5em 1em !important;
+    padding:       1em 1.25em !important;
+    font-size:     1.05em !important;
+    transition:    background .3s cubic-bezier(.4,0,.2,1),
+                   border-color .3s cubic-bezier(.4,0,.2,1),
+                   transform .3s cubic-bezier(.4,0,.2,1),
+                   box-shadow .3s cubic-bezier(.4,0,.2,1) !important;
+}
+.navMenuOption:hover,
+.listItem:hover {
+    background:    rgba(79,172,254,.15) !important;
+    border-color:  rgba(79,172,254,.3) !important;
+    transform:     translate(4px,-2px);
+    box-shadow:    0 4px 12px rgba(79,172,254,.2);
+}
+.navMenuOption-selected {
+    background:    linear-gradient(135deg,#4facfe,#8066e5) !important;
+    border-color:  rgba(255,255,255,.2) !important;
+    box-shadow:    0 4px 16px rgba(79,172,254,.4) !important;
+}
+
+/* ── ACTION SHEET ────────────────────────────────────────────────────────────── */
+.actionSheetScroller { max-width: 350px !important; width: 100% !important; box-sizing: border-box !important; }
+[role="dialog"]:has(.actionSheetScroller) { max-width: 350px !important; width: 90vw !important; }
+.actionSheetMenuItem {
+    background:    rgba(26,26,40,.2) !important;
+    border-radius: 10px !important;
+    margin:        .5em .75em !important;
+    padding:       .875em 1.25em !important;
+    font-size:     1.05em !important;
+    width:         calc(100% - 1.5em) !important;
+    box-sizing:    border-box !important;
+    transition:    background .25s ease, transform .25s ease;
+}
+.actionSheetMenuItem:hover { background: rgba(79,172,254,.15) !important; transform: translateX(4px); }
+.actionSheetMenuItem:has(.listItemIcon.check) { background: linear-gradient(135deg,rgba(79,172,254,.9),rgba(128,102,229,.9)) !important; }
+
+/* ── BUTTONS ─────────────────────────────────────────────────────────────────── */
+.raised,
+.fab,
+.button-submit,
+.emby-button-focusscale {
+    background:  linear-gradient(135deg,#4facfe,#8066e5) !important;
+    border:      1px solid rgba(255,255,255,.15) !important;
+    box-shadow:  0 4px 12px rgba(79,172,254,.3) !important;
+    transition:  background .3s ease, transform .3s ease, box-shadow .3s ease;
+}
+.raised:hover,
+.fab:hover,
+.button-submit:hover {
+    background:  linear-gradient(135deg,#8066e5,#a088f0) !important;
+    transform:   translateY(-2px);
+    box-shadow:  0 6px 20px rgba(79,172,254,.5) !important;
+}
+.emby-button.block,
+.button-alt {
+    background: rgba(26,26,40,.5) !important;
+    border:     1px solid rgba(255,255,255,.1) !important;
+    transition: background .3s ease, border-color .3s ease;
+}
+#btnDeleteImage,
+.button-delete,
+.btnRevoke {
+    background: linear-gradient(135deg,#ed4245,#f56565) !important;
+    box-shadow: 0 4px 12px rgba(237,66,69,.3) !important;
+}
+
+/* ── DETAIL PAGE ─────────────────────────────────────────────────────────────── */
+.detailSection:has(> form.trackSelections.hide)            { display: block !important; }
+.detailRibbon                                               { flex-direction: column !important; padding: 0 !important; }
+.detailPagePrimaryContainer,
+.detailPagePrimaryContent.padded-right                      { padding-right: var(--sidePadding) !important; padding-left: var(--sidePadding) !important; text-align: left; }
+.detailVerticalSection .emby-scrollbuttons,
+.verticalSection.emby-scroller-container > h2.sectionTitle.sectionTitle-cards { padding-top: 2em !important; }
+
+/* ── TAB BUTTONS ─────────────────────────────────────────────────────────────── */
+.emby-tab-button {
+    border-radius: 12px !important;
+    transition:    background .2s ease-in-out, transform .2s ease-in-out !important;
+}
+.emby-tab-button:hover  { background: #6bb8fe !important; transform: translateY(4px) !important; color: #000; }
+.emby-tab-button:active { transform: scale(.95) !important; }
+
+/* ── SERIES EPISODES SECTION ─────────────────────────────────────────────────── */
+.series-episodes-section {
+    width:        100vw !important;
+    max-width:    none !important;
+    margin-left:  0 !important;
+    left:         0 !important;
+    padding-left: 8px !important;
+    padding-top:  25px !important;
+    position:     relative !important;
+}
+.series-episodes-section .overflowBackdropCard   { width: 20vw !important; min-width: 320px !important; }
+.series-episodes-section .emby-scrollbuttons     { padding-right: 12% !important; margin-right: 0 !important; right: 0 !important; width: auto !important; padding-top: 25px !important; }
+
+/* ── CARD OVERLAY BUTTONS ────────────────────────────────────────────────────── */
+
+/* Default: horizontal row pinned to bottom-right (landscape/backdrop cards) */
+.cardScalable .cardOverlayButton-br {
+    display:         flex !important;
+    flex-direction:  row !important;
+    align-items:     center !important;
+    justify-content: flex-end !important;
+    bottom:          .5rem !important;
+    right:           .5rem !important;
+    gap:             4px;
+    pointer-events:  none;
+}
+
+.cardOverlayButton-br .watchlist-button,
+.cardOverlayButton-br .playstatebutton-icon-unplayed,
+.cardOverlayButton-br .playstatebutton-icon-played,
+.cardOverlayButton-br .favorite {
+    background:      var(--darkerGradientPoint) !important;
+    width:           var(--overlay-btn-size) !important;
+    height:          var(--overlay-btn-size) !important;
+    padding:         0 !important;
+    display:         inline-flex !important;
+    align-items:     center !important;
+    justify-content: center !important;
+    border-radius:   50% !important;
+    pointer-events:  auto;
+    opacity:         .8 !important;
+    transition:      transform .2s ease, background-color .2s ease, opacity .2s ease !important;
+}
+
+
+.cardOverlayButton-br .watchlist-button:hover,
+.cardOverlayButton-br .playstatebutton-icon-unplayed:hover,
+.cardOverlayButton-br .playstatebutton-icon-played:hover,
+.cardOverlayButton-br .favorite:hover {
+    transform:  scale(1.1) !important;
+    background: var(--uiAccentColor) !important;
+    opacity:    1 !important;
+}
+
+/*
+ * Portrait cards (overflowPortraitCard / portraitCard) on mobile:
+ * - Tall narrow cards have no room for horizontal buttons without clashing with the play button
+ * - Stack favorite + watchlist vertically in the bottom-right corner
+ * - Hide the watched button (playstatebutton) to reduce clutter in the tight space
+ */
+@media (max-width: 900px) {
+    :root { --overlay-btn-size: 28px; }
+
+    /* Portrait card type — vertical stack, bottom-right, no watched button */
+    .overflowPortraitCard .cardOverlayButton-br,
+    .portraitCard .cardOverlayButton-br {
+        flex-direction:  column !important;
+        align-items:     center !important;
+        justify-content: flex-end !important;
+        bottom:          .35rem !important;
+        right:           .35rem !important;
+        gap:             1px;
+    }
+
+    /* Hide watched button on portrait cards — keep favorite + watchlist only */
+    .overflowPortraitCard .cardOverlayButton-br .playstatebutton-icon-unplayed,
+    .overflowPortraitCard .cardOverlayButton-br .playstatebutton-icon-played,
+    .portraitCard .cardOverlayButton-br .playstatebutton-icon-unplayed,
+    .portraitCard .cardOverlayButton-br .playstatebutton-icon-played {
+        display: none !important;
+    }
+
+    /* Landscape/backdrop cards stay horizontal, smaller and tighter */
+    .overflowBackdropCard .cardOverlayButton-br,
+    .overflowSmallBackdropCard .cardOverlayButton-br,
+    .backdropCard .cardOverlayButton-br {
+        flex-direction: row !important;
+        bottom:         .35rem !important;
+        right:          .35rem !important;
+        gap:            1px;
+    }
+
+    .overflowBackdropCard .cardOverlayButton-br .watchlist-button,
+    .overflowBackdropCard .cardOverlayButton-br .playstatebutton-icon-unplayed,
+    .overflowBackdropCard .cardOverlayButton-br .playstatebutton-icon-played,
+    .overflowBackdropCard .cardOverlayButton-br .favorite,
+    .overflowSmallBackdropCard .cardOverlayButton-br .watchlist-button,
+    .overflowSmallBackdropCard .cardOverlayButton-br .playstatebutton-icon-unplayed,
+    .overflowSmallBackdropCard .cardOverlayButton-br .playstatebutton-icon-played,
+    .overflowSmallBackdropCard .cardOverlayButton-br .favorite,
+    .backdropCard .cardOverlayButton-br .watchlist-button,
+    .backdropCard .cardOverlayButton-br .playstatebutton-icon-unplayed,
+    .backdropCard .cardOverlayButton-br .playstatebutton-icon-played,
+    .backdropCard .cardOverlayButton-br .favorite {
+        width:  22px !important;
+        height: 22px !important;
+    }
+}
+
+/* ── CUSTOM LINKS HEADING ────────────────────────────────────────────────────── */
+.custom-links-heading {
+    padding-left:   24px !important;
+    opacity:        .7;
+    font-size:      .85rem;
+    text-transform: uppercase;
+    margin:         .75rem 0 .25rem 0;
+}
+
+/* ── PREVIEW POPUP ───────────────────────────────────────────────────────────── */
+#popupFocusContainer.previewPopup {
+    position:   fixed !important;
+    bottom:     1.5vh !important;
+    left:       50vw !important;
+    width:      48vw !important;
+    max-width:  calc(100vw - 50vw - 1rem) !important;
+    max-height: calc(100vh - 3vh) !important;
+    box-sizing: border-box !important;
+    overflow:   hidden !important;
+    animation:  previewPopupOpen 200ms cubic-bezier(0.32,0.72,0,1) forwards !important;
+}
+#popupFocusContainer.previewPopup.hiding {
+    animation: previewPopupClose 150ms cubic-bezier(0.32,0,0.67,0) forwards !important;
+}
+#popupFocusContainer.previewPopup #popupContentContainer.previewPopupScroller {
+    max-width:  100% !important;
+    width:      100% !important;
+    max-height: 60vh !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    box-sizing: border-box !important;
+}
+#popupFocusContainer.previewPopup #popupTitleContainer.previewPopupTitle {
+    max-height: none !important;
+    min-height: 3em !important;
+    padding:    .75em 1em !important;
+}
+#popupFocusContainer.previewPopup #popupTitleContainer h1.actionSheetTitle {
+    width:       100% !important;
+    padding-left: .5em !important;
+    font-size:   1.3em !important;
+    line-height: 1.4 !important;
+}
+#popupFocusContainer.previewPopup .previewListItem {
+    max-width:  100% !important;
+    box-sizing: border-box !important;
+}
+#popupFocusContainer.previewPopup .previewEpisodeContainer .previewEpisodeTitle { padding-left: .75em !important; }
+#popupFocusContainer.previewPopup .previewListItemContent,
+#popupFocusContainer.previewPopup .previewListItemContent > .flex {
+    max-width: 100% !important;
+    overflow:  hidden !important;
+    box-sizing: border-box !important;
+}
+#popupFocusContainer.previewPopup .previewEpisodeImageCard {
+    max-width:  30% !important;
+    min-width:  0 !important;
+    flex-shrink: 1 !important;
+}
+#popupFocusContainer.previewPopup .previewEpisodeDescription {
+    min-width:  0 !important;
+    flex:       1 !important;
+    word-break: break-word !important;
+}
+
+@keyframes previewPopupOpen {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+@keyframes previewPopupClose {
+    from { opacity: 1; transform: translateY(0)    scale(1);    }
+    to   { opacity: 0; transform: translateY(20px) scale(0.95); }
+}
+
+/* ── HOME PAGE LAYOUT ────────────────────────────────────────────────────────── */
+#slides-container {
+    position: relative !important;
+    width:    100% !important;
+    z-index:  1 !important;
+}
+.verticalSection.MyMedia.section0 {
+    position:   relative !important;
+    z-index:    2 !important;
+    margin-top: 0 !important;
+    clear:      both !important;
+}
+.homePage .mainAnimatedPages,
+.homePage .view {
+    display:        flex !important;
+    flex-direction: column !important;
+}

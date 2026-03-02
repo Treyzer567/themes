@@ -1,0 +1,1183 @@
+/*
+ * ==========================================
+ * FileBrowser Theme - Unified Design System
+ * ==========================================
+ * Complete dark and light mode support
+ */
+
+/* ****************************************************** */
+/* 1. DARK MODE (Default)                                 */
+/* ****************************************************** */
+
+:root {
+    --theme-bg: #0a0a0f;
+    --theme-bg-secondary: #0e0e14;
+    --theme-card-bg: #11111a;
+    --theme-card-glass: rgba(17, 17, 26, 0.95);
+    --theme-border: rgba(88, 101, 242, 0.18);
+    --theme-border-accent: rgba(88, 101, 242, 0.25);
+    --theme-border-visible: rgba(88, 101, 242, 0.35);
+    --theme-text: #e6e6e6;
+    --theme-text-muted: #b3b3b3;
+    --theme-text-dim: #888888;
+    --theme-accent: #5865f2;
+    --theme-accent-rgb: 88, 101, 242;
+    --theme-accent-gradient: linear-gradient(135deg, #5865f2, #7289da);
+    --theme-accent-subtle: rgba(88, 101, 242, 0.15);
+    --theme-accent-glow: rgba(88, 101, 242, 0.4);
+    --theme-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --theme-shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --theme-input-bg: #1a1a25;
+    --theme-hover-bg: rgba(88, 101, 242, 0.12);
+    --theme-active-bg: rgba(88, 101, 242, 0.2);
+    --theme-success: #4CAF50;
+    --theme-warning: #ffaa00;
+    --theme-danger: #ff5555;
+    
+    /* Header always dark */
+    --theme-header-bg: rgba(17, 17, 26, 0.95);
+    --theme-header-border: rgba(88, 101, 242, 0.18);
+    
+    /* Status bar always dark */
+    --theme-statusbar-bg: rgba(17, 17, 26, 0.95);
+    --theme-statusbar-border: rgba(88, 101, 242, 0.18);
+    --theme-statusbar-text: #e6e6e6;
+    --theme-statusbar-muted: #b3b3b3;
+    --theme-statusbar-input: #1a1a25;
+    
+    /* Overlay always dark */
+    --theme-overlay: rgba(10, 10, 15, 0.85);
+    
+    --primaryColor: #5865f2 !important;
+    --icon-violet: #5865f2 !important;
+}
+
+/* Apply dark mode variables */
+.dark-mode,
+[data-v-app].dark-mode,
+body.dark-mode {
+    --theme-bg: #0a0a0f;
+    --theme-bg-secondary: #0e0e14;
+    --theme-card-bg: #11111a;
+    --theme-card-glass: rgba(17, 17, 26, 0.95);
+    --theme-border: rgba(88, 101, 242, 0.18);
+    --theme-border-accent: rgba(88, 101, 242, 0.25);
+    --theme-border-visible: rgba(88, 101, 242, 0.35);
+    --theme-text: #e6e6e6;
+    --theme-text-muted: #b3b3b3;
+    --theme-text-dim: #888888;
+    --theme-input-bg: #1a1a25;
+    --theme-hover-bg: rgba(88, 101, 242, 0.12);
+    --theme-active-bg: rgba(88, 101, 242, 0.2);
+    --theme-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --theme-overlay: rgba(10, 10, 15, 0.85);
+}
+
+/* ****************************************************** */
+/* 2. LIGHT MODE - COMPLETE                               */
+/* ****************************************************** */
+
+@media (prefers-color-scheme: light) {
+    :root:not(.dark-mode) {
+        --theme-bg: #f0f2f8;
+        --theme-bg-secondary: #e8eaf2;
+        --theme-card-bg: #ffffff;
+        --theme-card-glass: rgba(255, 255, 255, 0.92);
+        --theme-border: rgba(88, 101, 242, 0.12);
+        --theme-border-accent: rgba(88, 101, 242, 0.2);
+        --theme-border-visible: rgba(88, 101, 242, 0.25);
+        --theme-text: #1a1a2e;
+        --theme-text-muted: #5a5a7a;
+        --theme-text-dim: #8888a0;
+        --theme-input-bg: #e8eaf2;
+        --theme-hover-bg: rgba(88, 101, 242, 0.08);
+        --theme-active-bg: rgba(88, 101, 242, 0.12);
+        --theme-shadow: 0 4px 20px rgba(88, 101, 242, 0.08);
+        --theme-shadow-sm: 0 2px 8px rgba(88, 101, 242, 0.06);
+        --theme-accent-subtle: rgba(88, 101, 242, 0.08);
+        --theme-accent-glow: rgba(88, 101, 242, 0.25);
+        
+        /* These stay dark in light mode */
+        --theme-header-bg: rgba(17, 17, 26, 0.95);
+        --theme-header-border: rgba(88, 101, 242, 0.18);
+        --theme-statusbar-bg: rgba(17, 17, 26, 0.95);
+        --theme-statusbar-border: rgba(88, 101, 242, 0.18);
+        --theme-statusbar-text: #e6e6e6;
+        --theme-statusbar-muted: #b3b3b3;
+        --theme-statusbar-input: #1a1a25;
+        --theme-overlay: rgba(10, 10, 15, 0.85);
+    }
+}
+
+/* Explicit light mode class */
+body:not(.dark-mode),
+html:not(.dark-mode) [data-v-app],
+[data-v-app]:not(.dark-mode) {
+    --theme-bg: #f0f2f8;
+    --theme-bg-secondary: #e8eaf2;
+    --theme-card-bg: #ffffff;
+    --theme-card-glass: rgba(255, 255, 255, 0.92);
+    --theme-border: rgba(88, 101, 242, 0.12);
+    --theme-border-accent: rgba(88, 101, 242, 0.2);
+    --theme-border-visible: rgba(88, 101, 242, 0.25);
+    --theme-text: #1a1a2e;
+    --theme-text-muted: #5a5a7a;
+    --theme-text-dim: #8888a0;
+    --theme-input-bg: #e8eaf2;
+    --theme-hover-bg: rgba(88, 101, 242, 0.08);
+    --theme-active-bg: rgba(88, 101, 242, 0.12);
+    --theme-shadow: 0 4px 20px rgba(88, 101, 242, 0.08);
+    --theme-shadow-sm: 0 2px 8px rgba(88, 101, 242, 0.06);
+    --theme-accent-subtle: rgba(88, 101, 242, 0.08);
+    --theme-accent-glow: rgba(88, 101, 242, 0.25);
+    
+    /* These stay dark */
+    --theme-header-bg: rgba(17, 17, 26, 0.95);
+    --theme-header-border: rgba(88, 101, 242, 0.18);
+    --theme-statusbar-bg: rgba(17, 17, 26, 0.95);
+    --theme-statusbar-border: rgba(88, 101, 242, 0.18);
+    --theme-statusbar-text: #e6e6e6;
+    --theme-statusbar-muted: #b3b3b3;
+    --theme-statusbar-input: #1a1a25;
+    --theme-overlay: rgba(10, 10, 15, 0.85);
+}
+
+/* ****************************************************** */
+/* 3. GLOBAL BASE                                         */
+/* ****************************************************** */
+
+html, body {
+    background-color: var(--theme-bg) !important;
+    color: var(--theme-text) !important;
+}
+
+body, #app, #main, .scroll-wrapper, .scrollable {
+    background-color: var(--theme-bg) !important;
+    color: var(--theme-text) !important;
+    font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif !important;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--theme-bg); }
+::-webkit-scrollbar-thumb { 
+    background: var(--theme-border-accent); 
+    border-radius: 8px; 
+}
+::-webkit-scrollbar-thumb:hover { 
+    background: var(--theme-accent); 
+}
+
+::selection {
+    background: var(--theme-accent) !important;
+    color: white !important;
+}
+
+/* ****************************************************** */
+/* 4. HEADER - ALWAYS DARK                                */
+/* ****************************************************** */
+
+header,
+header.flexbar,
+header.flexbar.dark-mode-header {
+    background: var(--theme-header-bg) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid var(--theme-header-border) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Header text and icons always light */
+header *,
+header.flexbar *,
+header.flexbar.dark-mode-header * {
+    color: #e6e6e6;
+}
+
+.ham .line { 
+    stroke: var(--theme-accent) !important; 
+}
+
+/* ****************************************************** */
+/* 5. SIDEBAR                                             */
+/* ****************************************************** */
+
+#sidebar,
+#sidebar.active,
+#sidebar.dark-mode,
+#sidebar.active.dark-mode {
+    background: var(--theme-bg) !important;
+    border-right: 1px solid var(--theme-border) !important;
+}
+
+.card.headline-card, 
+.sidebar-links.card {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.inner-card {
+    background: transparent !important;
+    padding: 8px !important;
+}
+
+/* Storage and sidebar link buttons */
+.inner-card .action.button.sidebar-link-button,
+.inner-card a.action.button.sidebar-link-button,
+a.action.button.source-button.sidebar-link-button,
+.source-button.sidebar-link-button {
+    background: var(--theme-input-bg) !important;
+    border: 1px solid var(--theme-border-visible) !important;
+    border-radius: 10px !important;
+    margin: 4px 0 !important;
+    padding: 10px 12px !important;
+    transition: all 0.15s ease !important;
+    color: var(--theme-text) !important;
+}
+
+.inner-card .action.button.sidebar-link-button:hover,
+a.action.button.source-button.sidebar-link-button:hover {
+    background: var(--theme-hover-bg) !important;
+    border-color: var(--theme-accent) !important;
+}
+
+.inner-card .action.button.sidebar-link-button.active,
+a.action.button.source-button.sidebar-link-button.active {
+    background: var(--theme-accent-subtle) !important;
+    border-color: var(--theme-accent) !important;
+}
+
+.source-container {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-bottom: 8px !important;
+}
+
+.source-container span {
+    color: var(--theme-text) !important;
+    font-weight: 600 !important;
+}
+
+.source-container .tooltip-info-icon {
+    color: var(--theme-text-muted) !important;
+}
+
+.link-container {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+.link-container .link-icon,
+.link-container i {
+    color: var(--theme-text-muted) !important;
+}
+
+.link-container span {
+    color: var(--theme-text) !important;
+}
+
+.realtime-pulse .center { fill: var(--theme-accent) !important; }
+.realtime-pulse .pulse { stroke: var(--theme-accent) !important; fill: none !important; }
+
+/* Sidebar flyout */
+.card.floating.fb-shadow,
+.card.floating.fb-shadow.dark-mode {
+    background: var(--theme-card-bg) !important;
+    border: 1px solid var(--theme-border-accent) !important;
+    border-radius: 12px !important;
+    box-shadow: var(--theme-shadow) !important;
+}
+
+.card-title h2,
+.card-content p {
+    color: var(--theme-text) !important;
+}
+
+.links-list h3 {
+    color: var(--theme-text-muted) !important;
+}
+
+.link-item.input.no-select {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 8px !important;
+    transition: all 0.15s ease !important;
+}
+
+.link-item.input.no-select:hover {
+    background: var(--theme-hover-bg) !important;
+}
+
+.link-drag-handle i,
+.link-icon i {
+    color: var(--theme-text-muted) !important;
+}
+
+.link-item.input.no-select:hover .link-icon i {
+    color: var(--theme-accent) !important;
+}
+
+.link-name { color: var(--theme-text) !important; }
+.link-category { color: var(--theme-text-muted) !important; }
+
+.credits a,
+.credits span { color: var(--theme-text-muted) !important; }
+.credits h4 { color: var(--theme-text) !important; }
+
+/* ****************************************************** */
+/* 6. TOGGLE BUTTONS - SMALLER                            */
+/* ****************************************************** */
+
+.slider.round {
+    background-color: var(--theme-input-bg) !important;
+    border: 1px solid var(--theme-border) !important;
+}
+
+input:checked + .slider,
+input:checked + .slider.round {
+    background-color: var(--theme-accent) !important;
+    border-color: var(--theme-accent) !important;
+}
+
+.slider i,
+.slider .material-icons {
+    color: var(--theme-text) !important;
+}
+
+input:checked + .slider i,
+input:checked + .slider .material-icons {
+    color: white !important;
+}
+
+/* Quick toggles in header - smaller */
+.quick-toggles .clickable {
+    color: #b3b3b3 !important;
+    padding: 4px !important;
+    border-radius: 4px !important;
+    transition: all 0.15s ease !important;
+}
+
+.quick-toggles .clickable:hover {
+    color: var(--theme-accent) !important;
+    background: rgba(88, 101, 242, 0.15) !important;
+}
+
+.quick-toggles .clickable.active {
+    color: white !important;
+    background: var(--theme-accent) !important;
+}
+
+.quick-toggles .clickable.active i {
+    color: white !important;
+}
+
+.quick-toggles .clickable i.material-icons,
+.quick-toggles .clickable .material-symbols-outlined {
+    font-size: 18px !important;
+}
+
+/* ****************************************************** */
+/* 7. BUTTONS                                             */
+/* ****************************************************** */
+
+.button.button--flat.button--blue,
+.person-button,
+.file-actions,
+.logout-button {
+    background: var(--theme-accent-gradient) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 15px var(--theme-accent-glow) !important;
+}
+
+.button.button--flat.button--blue:hover,
+.person-button:hover,
+.file-actions:hover,
+.logout-button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px var(--theme-accent-glow) !important;
+}
+
+.button.button--flat.button--grey {
+    background: var(--theme-input-bg) !important;
+    color: var(--theme-text) !important;
+    border: 1px solid var(--theme-border) !important;
+    border-radius: 8px !important;
+}
+
+.button.button--flat.button--grey:hover {
+    background: var(--theme-hover-bg) !important;
+    border-color: var(--theme-accent) !important;
+}
+
+.clickable:hover,
+.action:hover,
+button.action:hover {
+    background: var(--theme-hover-bg) !important;
+}
+
+button.action.input i { color: var(--theme-text-muted) !important; }
+button.action.input:hover i { color: var(--theme-accent) !important; }
+
+/* ****************************************************** */
+/* 8. CONTEXT MENU                                        */
+/* ****************************************************** */
+
+#context-menu {
+    background: var(--theme-card-bg) !important;
+    border: 1px solid var(--theme-border-accent) !important;
+    border-radius: 12px !important;
+    box-shadow: var(--theme-shadow) !important;
+    padding: 6px !important;
+}
+
+#context-menu .context-menu-header .action.button.clickable {
+    background: var(--theme-accent-subtle) !important;
+    border-radius: 8px !important;
+}
+
+#context-menu .context-menu-header .action.button.clickable:hover {
+    background: var(--theme-accent) !important;
+}
+
+#context-menu .context-menu-header .action.button.clickable:hover i {
+    color: white !important;
+}
+
+#context-menu .selected-count-header {
+    background: var(--theme-accent-subtle) !important;
+    color: var(--theme-accent) !important;
+}
+
+#context-menu hr.divider {
+    border: none !important;
+    border-top: 1px solid var(--theme-border) !important;
+}
+
+#context-menu button.action.no-select,
+#context-menu .action.no-select {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 8px !important;
+    color: var(--theme-text) !important;
+    transition: all 0.15s ease !important;
+}
+
+#context-menu button.action.no-select:hover {
+    background: var(--theme-hover-bg) !important;
+}
+
+#context-menu button.action.no-select i {
+    color: var(--theme-text-muted) !important;
+}
+
+#context-menu button.action.no-select:hover i {
+    color: var(--theme-accent) !important;
+}
+
+#context-menu button.action.no-select .counter {
+    background: var(--theme-accent-subtle) !important;
+    color: var(--theme-accent) !important;
+}
+
+#context-menu button.action.no-select[aria-label="Delete"]:hover {
+    background: rgba(255, 85, 85, 0.12) !important;
+}
+
+#context-menu button.action.no-select[aria-label="Delete"]:hover i {
+    color: var(--theme-danger) !important;
+}
+
+/* ****************************************************** */
+/* 9. SETTINGS                                            */
+/* ****************************************************** */
+
+.settings-group-title.button {
+    background: var(--theme-accent-subtle) !important;
+    border: 1px solid var(--theme-border) !important;
+    color: var(--theme-text) !important;
+    border-radius: 12px !important;
+}
+
+.settings-group-title.button:hover {
+    background: var(--theme-hover-bg) !important;
+    border-color: var(--theme-accent) !important;
+}
+
+.settings-group-title.button h3 { color: var(--theme-text) !important; }
+.settings-group-title.button i { color: var(--theme-accent) !important; }
+
+.card.item.clickable.settings-card {
+    background: transparent !important;
+    border: 1px solid var(--theme-border) !important;
+    color: var(--theme-text) !important;
+    border-radius: 10px !important;
+}
+
+.card.item.clickable.settings-card:hover {
+    background: var(--theme-hover-bg) !important;
+    border-color: var(--theme-accent) !important;
+}
+
+.settings-icon { color: var(--theme-text-muted) !important; }
+.card.item.clickable.settings-card:hover .settings-icon { color: var(--theme-accent) !important; }
+
+/* ****************************************************** */
+/* 10. STORAGE PROGRESS                                   */
+/* ****************************************************** */
+
+.vue-simple-progress {
+    background: var(--theme-input-bg) !important;
+    border-radius: 8px !important;
+}
+
+.vue-simple-progress-bar {
+    background: var(--theme-accent-gradient) !important;
+    border-radius: 8px !important;
+}
+
+.vue-simple-progress-text {
+    color: white !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* ****************************************************** */
+/* 11. FILE LISTING                                       */
+/* ****************************************************** */
+
+#listingView {
+    background: transparent !important;
+}
+
+.header.card,
+.header.card.dark-mode-item-header {
+    background: var(--theme-accent-subtle) !important;
+    border: 1px solid var(--theme-border) !important;
+    border-radius: 10px !important;
+}
+
+.header.card p,
+.header.card.dark-mode-item-header p {
+    color: var(--theme-text-muted) !important;
+}
+
+.header.card p:hover { color: var(--theme-accent) !important; }
+.header.card p.active { color: var(--theme-accent) !important; }
+
+.listing-item {
+    background: transparent !important;
+    border-radius: 10px !important;
+    border: 1px solid transparent !important;
+}
+
+.listing-item:hover {
+    background: var(--theme-hover-bg) !important;
+    border-color: var(--theme-border) !important;
+}
+
+.listing-item.selected {
+    background: var(--theme-active-bg) !important;
+    border-color: var(--theme-accent) !important;
+}
+
+.listing-item .name,
+.listing-item .item-name {
+    color: var(--theme-text) !important;
+}
+
+.listing-item .size,
+.listing-item .modified {
+    color: var(--theme-text-muted) !important;
+}
+
+/* All file/folder icons use accent color */
+.listing-item i.material-icons,
+.listing-item .material-icons,
+.listing-item .material-symbols-outlined {
+    color: var(--theme-accent) !important;
+}
+
+/* Download button on items - distinct hover */
+.listing-item .action[aria-label="Download"],
+.listing-item button[aria-label="Download"],
+.listing-item .download-button,
+.listing-item .item-action,
+.listing-item .file-action {
+    border-radius: 6px !important;
+    padding: 4px !important;
+    transition: all 0.15s ease !important;
+}
+
+.listing-item .action[aria-label="Download"]:hover,
+.listing-item button[aria-label="Download"]:hover,
+.listing-item .download-button:hover,
+.listing-item .item-action:hover,
+.listing-item .file-action:hover {
+    background: var(--theme-accent) !important;
+    box-shadow: 0 2px 8px var(--theme-accent-glow) !important;
+}
+
+.listing-item .action[aria-label="Download"]:hover i,
+.listing-item button[aria-label="Download"]:hover i,
+.listing-item .download-button:hover i,
+.listing-item .item-action:hover i,
+.listing-item .file-action:hover i {
+    color: white !important;
+}
+
+/* ****************************************************** */
+/* 12. STATUS BAR - ALWAYS DARK, FULLY THEMED             */
+/* ****************************************************** */
+
+#status-bar,
+#status-bar.dark-mode-header,
+#status-bar.dark-mode-header.active,
+#status-bar.active {
+    background: var(--theme-statusbar-bg) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-top: 1px solid var(--theme-statusbar-border) !important;
+    padding: 8px 16px !important;
+}
+
+#status-bar .status-content {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+
+#status-bar .status-info,
+#status-bar .directory-info,
+.directory-info {
+    color: var(--theme-statusbar-text) !important;
+    font-weight: 500 !important;
+    font-size: 0.85rem !important;
+}
+
+#status-bar .status-controls {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
+#status-bar .gallery-size-control {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+#status-bar .size-label,
+.size-label {
+    color: var(--theme-statusbar-muted) !important;
+    font-weight: 500 !important;
+    font-size: 0.85rem !important;
+}
+
+/* Status bar slider - always dark themed */
+#status-bar input[type="range"],
+input[type="range"]#gallery-size {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    width: 100px !important;
+    height: 6px !important;
+    background: var(--theme-statusbar-input) !important;
+    border-radius: 3px !important;
+    outline: none !important;
+    cursor: pointer !important;
+}
+
+#status-bar input[type="range"]::-webkit-slider-thumb,
+input[type="range"]#gallery-size::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    width: 14px !important;
+    height: 14px !important;
+    background: var(--theme-accent) !important;
+    border-radius: 50% !important;
+    cursor: pointer !important;
+    box-shadow: 0 0 6px rgba(88, 101, 242, 0.5) !important;
+    transition: transform 0.15s ease !important;
+}
+
+#status-bar input[type="range"]::-webkit-slider-thumb:hover,
+input[type="range"]#gallery-size::-webkit-slider-thumb:hover {
+    transform: scale(1.2) !important;
+}
+
+#status-bar input[type="range"]::-moz-range-thumb,
+input[type="range"]#gallery-size::-moz-range-thumb {
+    width: 14px !important;
+    height: 14px !important;
+    background: var(--theme-accent) !important;
+    border-radius: 50% !important;
+    cursor: pointer !important;
+    border: none !important;
+    box-shadow: 0 0 6px rgba(88, 101, 242, 0.5) !important;
+}
+
+#status-bar input[type="range"]::-moz-range-track,
+input[type="range"]#gallery-size::-moz-range-track {
+    background: var(--theme-statusbar-input) !important;
+    height: 6px !important;
+    border-radius: 3px !important;
+}
+
+#status-bar .material-icons,
+#status-bar .material-symbols-outlined,
+#status-bar i {
+    color: var(--theme-accent) !important;
+}
+
+/* ****************************************************** */
+/* 13. BREADCRUMBS - NO SEPARATOR                         */
+/* ****************************************************** */
+
+#breadcrumbs,
+#breadcrumbs.add-padding {
+    display: flex !important;
+    align-items: center !important;
+    padding: 10px 16px !important;
+    background: transparent !important;
+}
+
+#breadcrumbs ul {
+    display: flex !important;
+    align-items: center !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    gap: 4px !important;
+}
+
+#breadcrumbs li {
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+/* Remove ALL separators/arrows/pseudo-elements */
+#breadcrumbs li::before,
+#breadcrumbs li::after,
+#breadcrumbs li.item::before,
+#breadcrumbs li.item::after,
+#breadcrumbs ul::before,
+#breadcrumbs ul::after,
+#breadcrumbs li *::before,
+#breadcrumbs li *::after {
+    content: none !important;
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    border: none !important;
+    background: none !important;
+}
+
+#breadcrumbs li a {
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 6px 12px !important;
+    color: var(--theme-text-muted) !important;
+    background: var(--theme-input-bg) !important;
+    border: 1px solid var(--theme-border) !important;
+    border-radius: 6px !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    transition: all 0.15s ease !important;
+}
+
+#breadcrumbs li a:hover {
+    color: var(--theme-accent) !important;
+    background: var(--theme-hover-bg) !important;
+    border-color: var(--theme-accent) !important;
+}
+
+#breadcrumbs li a.router-link-active,
+#breadcrumbs li a.router-link-exact-active {
+    color: white !important;
+    background: var(--theme-accent) !important;
+    border-color: var(--theme-accent) !important;
+}
+
+#breadcrumbs li a i.material-icons {
+    font-size: 16px !important;
+}
+
+/* ****************************************************** */
+/* 14. SEARCH - WITH ANIMATIONS                           */
+/* ****************************************************** */
+
+/* Search container */
+#search {
+    background: transparent !important;
+    transition: background 0.25s ease, backdrop-filter 0.25s ease !important;
+}
+
+#search.active {
+    background: var(--theme-overlay) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+}
+
+/* Search input container */
+#search-input {
+    background: var(--theme-input-bg) !important;
+    border: 1px solid var(--theme-border) !important;
+    border-radius: 12px !important;
+    padding: 12px 16px !important;
+    min-height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    transition: all 0.2s ease !important;
+}
+
+#search-input:hover {
+    border-color: var(--theme-border-accent) !important;
+}
+
+#search-input:focus-within,
+#search-input.active {
+    border-color: var(--theme-accent) !important;
+    box-shadow: 0 0 0 3px var(--theme-accent-glow) !important;
+}
+
+/* Search icon */
+#search-input > i.material-icons:first-child {
+    color: var(--theme-text-muted) !important;
+    font-size: 22px !important;
+    flex-shrink: 0 !important;
+}
+
+/* Main search input field */
+#search-input input#main-input,
+#search-input .main-input {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    color: var(--theme-text) !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    flex: 1 !important;
+    padding: 0 !important;
+    height: auto !important;
+    min-width: 0 !important;
+}
+
+#search-input input#main-input::placeholder {
+    color: var(--theme-text-muted) !important;
+}
+
+/* Close button - fixed size, not stretched */
+#search-input > i.material-icons:last-child,
+#search-input .close-button,
+#search-input [aria-label="close"],
+#search-input [aria-label="Close"] {
+    color: var(--theme-text-muted) !important;
+    font-size: 20px !important;
+    width: 20px !important;
+    height: 20px !important;
+    flex-shrink: 0 !important;
+    flex-grow: 0 !important;
+    cursor: pointer !important;
+    border-radius: 4px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.15s ease !important;
+}
+
+#search-input > i.material-icons:last-child:hover,
+#search-input .close-button:hover,
+#search-input [aria-label="close"]:hover,
+#search-input [aria-label="Close"]:hover {
+    color: var(--theme-accent) !important;
+    background: var(--theme-hover-bg) !important;
+}
+
+/* Search results dropdown - with animation */
+#results {
+    background: var(--theme-card-bg) !important;
+    border: 1px solid var(--theme-border-accent) !important;
+    border-radius: 12px !important;
+    box-shadow: var(--theme-shadow) !important;
+    color: var(--theme-text) !important;
+    margin-top: 8px !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: opacity 0.2s ease, transform 0.2s ease !important;
+}
+
+#results[style*="display: none"] {
+    opacity: 0 !important;
+    transform: translateY(-10px) !important;
+}
+
+.searchContext {
+    color: var(--theme-text) !important;
+    border-bottom: 1px solid var(--theme-border) !important;
+    padding: 12px 16px !important;
+    font-weight: 600 !important;
+}
+
+.searchPrompt {
+    color: var(--theme-text-muted) !important;
+    padding: 16px !important;
+}
+
+.searchPrompt p {
+    color: var(--theme-text-muted) !important;
+}
+
+.searchPrompt i {
+    color: var(--theme-text-dim) !important;
+}
+
+.search-options .button-group button {
+    background: transparent !important;
+    border: 1px solid var(--theme-border) !important;
+    color: var(--theme-text-muted) !important;
+    border-radius: 6px !important;
+}
+
+.search-options .button-group button:hover {
+    background: var(--theme-hover-bg) !important;
+    color: var(--theme-accent) !important;
+}
+
+.search-options .button-group button.active {
+    background: var(--theme-accent) !important;
+    color: white !important;
+    border-color: var(--theme-accent) !important;
+}
+
+.sizeConstraints {
+    background: var(--theme-accent-subtle) !important;
+    border: 1px solid var(--theme-border) !important;
+    border-radius: 10px !important;
+}
+
+.sizeInput {
+    background: var(--theme-input-bg) !important;
+    border: 1px solid var(--theme-border) !important;
+    color: var(--theme-accent) !important;
+}
+
+/* ****************************************************** */
+/* 15. LOGIN                                              */
+/* ****************************************************** */
+
+body.login {
+    background-color: var(--theme-bg) !important;
+}
+
+.card.login-card {
+    background: var(--theme-card-glass) !important;
+    border: 1px solid var(--theme-border-accent) !important;
+    border-radius: 20px !important;
+    box-shadow: var(--theme-shadow) !important;
+}
+
+.login-card .password-entry input.input {
+    background: var(--theme-input-bg) !important;
+    border: 1px solid var(--theme-border) !important;
+    border-radius: 10px !important;
+    color: var(--theme-text) !important;
+}
+
+.login-card .password-entry input.input:focus {
+    border-color: var(--theme-accent) !important;
+    box-shadow: 0 0 0 3px var(--theme-accent-glow) !important;
+}
+
+.login-card .password-entry input.input::placeholder {
+    color: var(--theme-text-muted) !important;
+}
+
+.login-card .button.button--block {
+    background: var(--theme-accent-gradient) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 15px var(--theme-accent-glow) !important;
+}
+
+.login-card .button.button--block:hover {
+    transform: translateY(-2px) !important;
+}
+
+/* ****************************************************** */
+/* 16. MODALS & DIALOGS - DARK OVERLAY                    */
+/* ****************************************************** */
+
+.overlay,
+.modal-backdrop {
+    background: var(--theme-overlay) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+}
+
+.modal,
+.dialog,
+.prompt,
+.card.floating {
+    background: var(--theme-card-bg) !important;
+    border: 1px solid var(--theme-border-accent) !important;
+    border-radius: 16px !important;
+    box-shadow: var(--theme-shadow) !important;
+    color: var(--theme-text) !important;
+}
+
+/* ****************************************************** */
+/* 17. FORMS & INPUTS                                     */
+/* ****************************************************** */
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+textarea,
+select {
+    background: var(--theme-input-bg) !important;
+    border: 1px solid var(--theme-border) !important;
+    border-radius: 8px !important;
+    color: var(--theme-text) !important;
+}
+
+input:hover,
+textarea:hover,
+select:hover {
+    border-color: var(--theme-border-accent) !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--theme-accent) !important;
+    box-shadow: 0 0 0 3px var(--theme-accent-glow) !important;
+    outline: none !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--theme-text-muted) !important;
+}
+
+/* ****************************************************** */
+/* 18. DROPDOWNS                                          */
+/* ****************************************************** */
+
+.dropdown,
+.dropdown-menu,
+.popover,
+.popup-menu {
+    background: var(--theme-card-bg) !important;
+    border: 1px solid var(--theme-border-accent) !important;
+    border-radius: 10px !important;
+    box-shadow: var(--theme-shadow) !important;
+}
+
+.dropdown-item,
+.dropdown-menu li,
+.dropdown-menu a {
+    color: var(--theme-text) !important;
+}
+
+.dropdown-item:hover,
+.dropdown-menu li:hover,
+.dropdown-menu a:hover {
+    background: var(--theme-hover-bg) !important;
+    color: var(--theme-accent) !important;
+}
+
+.dropdown-item i,
+.dropdown-menu li i {
+    color: var(--theme-text-muted) !important;
+}
+
+.dropdown-item:hover i,
+.dropdown-menu li:hover i {
+    color: var(--theme-accent) !important;
+}
+
+/* ****************************************************** */
+/* 19. TOOLTIPS                                           */
+/* ****************************************************** */
+
+.tooltip,
+[data-tooltip]::after {
+    background: var(--theme-card-bg) !important;
+    border: 1px solid var(--theme-border) !important;
+    border-radius: 6px !important;
+    color: var(--theme-text) !important;
+    box-shadow: var(--theme-shadow-sm) !important;
+}
+
+/* ****************************************************** */
+/* 20. UPLOAD                                             */
+/* ****************************************************** */
+
+.upload-area,
+.drop-zone,
+.dropzone {
+    background: var(--theme-accent-subtle) !important;
+    border: 2px dashed var(--theme-border-accent) !important;
+    border-radius: 12px !important;
+}
+
+.upload-area:hover,
+.drop-zone:hover,
+.upload-area.drag-over {
+    border-color: var(--theme-accent) !important;
+    background: var(--theme-hover-bg) !important;
+}
+
+/* ****************************************************** */
+/* 21. NOTIFICATIONS                                      */
+/* ****************************************************** */
+
+.notification,
+.toast,
+.snackbar {
+    background: var(--theme-card-bg) !important;
+    border: 1px solid var(--theme-border-accent) !important;
+    border-radius: 10px !important;
+    box-shadow: var(--theme-shadow) !important;
+    color: var(--theme-text) !important;
+}
+
+.notification.success { border-left: 3px solid var(--theme-success) !important; }
+.notification.error { border-left: 3px solid var(--theme-danger) !important; }
+.notification.warning { border-left: 3px solid var(--theme-warning) !important; }
+.notification.info { border-left: 3px solid var(--theme-accent) !important; }
+
+/* ****************************************************** */
+/* 22. MISC TEXT ELEMENTS                                 */
+/* ****************************************************** */
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--theme-text) !important;
+}
+
+p, span, div {
+    color: inherit;
+}
+
+a {
+    color: var(--theme-accent) !important;
+}
+
+a:hover {
+    color: var(--theme-accent) !important;
+    filter: brightness(1.2);
+}
+
+/* Browser extension handling */
+[data-protonpass-role="icon"],
+protonpass-control-4fa1 {
+    filter: hue-rotate(240deg) saturate(0.5) !important;
+    opacity: 0.5 !important;
+}

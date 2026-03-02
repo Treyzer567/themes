@@ -1,0 +1,164 @@
+/* --- UNIVERSAL VARIABLES --- */
+:root {
+  --ef-bg: linear-gradient(0deg, #0a0a0f 25%, #101018);
+  --ef-card-bg: #11111a;
+  --ef-card-header: #191927;
+  --ef-border: rgba(255, 255, 255, 0.1);
+  --ef-accent: #5865f2;
+  --ef-accent-gradient: linear-gradient(135deg, #5865f2, #7289da);
+  --ef-text: #e6e6e6;
+  --ef-dim-text: #b3b3b3;
+  --ef-card-radius: 12px;
+  --ef-badge-scale: 2.8;
+  --ef-dropdown-zindex: 100000;
+  --ef-main-content-top-offset: 1.5rem;
+  --ef-glow: 0 0 15px rgba(88, 101, 242, 0.5);
+}
+
+/* --- BASE LAYOUT --- */
+html, body { background: var(--ef-bg) !important; color: var(--ef-text) !important; font-family: 'Segoe UI', Roboto, sans-serif !important; }
+main.mantine-AppShell-main { padding-top: var(--ef-main-content-top-offset) !important; }
+
+/* --- FLOATING HEADER --- */
+header, .header, .app-header {
+  background: linear-gradient(0deg, #11111a 25%, #191927) !important;
+  backdrop-filter: blur(12px) !important;
+  border-radius: 12px !important;
+  border: 1px solid var(--ef-border) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4) !important;
+  margin: 1rem 2rem !important;
+  padding: 1rem 2rem !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 999 !important;
+  min-height: 6.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  margin-bottom: -0.8rem !important;
+}
+
+header h2 { font-size: 1.7rem !important; font-weight: 700 !important; color: #fff !important; margin-left: 0.5rem !important; }
+
+header .logo {
+  height: 2.8rem !important;
+  width: auto !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  margin-left: -2rem !important;
+  margin-right: -1.5rem !important;
+}
+
+/* --- INPUTS & SEARCH --- */
+.mantine-Input-input, .mantine-TextInput-input, .mantine-NumberInput-input, .mantine-Spotlight-search {
+  background-color: #0d0d14 !important;
+  color: #fff !important;
+  border: 1px solid var(--ef-border) !important;
+  height: 3rem !important;
+}
+.mantine-Input-input:focus { border-color: var(--ef-accent) !important; }
+
+/* Dashboard Search Bar */
+.search-module__UNItuG__desktopSearch { width: 30rem !important; align-items: center !important; }
+.search-module__UNItuG__desktopSearch .mantine-Input-input {
+  background: rgba(88, 101, 242, 0.85) !important;
+}
+
+/* Search Icon */
+.mantine-Input-wrapper.mantine-TextInput-wrapper svg.tabler-icon-search {
+  stroke: #ffffff !important;
+  margin-left: 0.5rem !important;
+}
+
+/* --- BUTTONS --- */
+button, .homarr-button {
+  background: var(--ef-accent-gradient) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+}
+button:hover { transform: translateY(-2px) !important; box-shadow: var(--ef-glow) !important; }
+
+a[href*="settings"].mantine-ActionIcon-root:hover {
+  background-color: rgba(88, 101, 242, 0.3) !important;
+  transition: all 0.1s ease !important;
+  color: #fff !important;
+  box-shadow: 0 0 15px rgba(88, 101, 242, 0.5), inset 0 0 5px rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* --- CARDS & WIDGETS --- */
+.item-module__Qjq11G__itemCard, .mantine-Card-root, .widget-markdown {
+  background: linear-gradient(0deg, #11111a 25%, #191927) !important;
+  border: 1px solid var(--ef-border) !important;
+  border-radius: var(--ef-card-radius) !important;
+  transition: all 0.3s ease !important;
+}
+.item-module__Qjq11G__itemCard:hover { border-color: var(--ef-accent) !important; box-shadow: 0 6px 18px rgba(88, 101, 242, 0.35) !important; }
+
+/* --- MENUS, DROPDOWNS & SPOTLIGHT --- */
+.mantine-Menu-dropdown, .mantine-Combobox-dropdown, .mantine-Popover-dropdown, .mantine-Spotlight-content {
+  background: #11111a !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
+  z-index: var(--ef-dropdown-zindex) !important;
+}
+
+.mantine-Menu-item[data-hovered], .mantine-Combobox-option[data-combobox-hovered], .mantine-Spotlight-action:hover, .mantine-Spotlight-action[data-selected] {
+  background-color: rgba(88, 101, 242, 0.3) !important;
+  color: #fff !important;
+  box-shadow: var(--ef-glow), inset 0 0 5px rgba(255, 255, 255, 0.2) !important;
+  transition: all 0.1s ease !important;
+}
+
+/* --- CONTEXT MENU & DROPDOWN UNIVERSAL FIX --- */
+.mantine-Menu-item:hover,
+.mantine-Combobox-option:hover,
+.mantine-Select-option:hover {
+  background-color: rgba(88, 101, 242, 0.3) !important;
+  color: #fff !important;
+  box-shadow: 0 0 15px rgba(88, 101, 242, 0.5), inset 0 0 5px rgba(255, 255, 255, 0.2) !important;
+  transition: all 0.1s ease !important;
+}
+
+/* --- MODALS --- */
+.mantine-Modal-overlay { z-index: 10000 !important; background-color: rgba(0,0,0,0.5) !important; backdrop-filter: blur(4px); }
+.mantine-Modal-inner { z-index: 99999 !important; }
+.mantine-Modal-content { background: #11111a !important; border: 1px solid var(--ef-border) !important; color: var(--ef-text) !important; }
+
+/* --- CUSTOM CLASSES & SECTION BADGES --- */
+.purple-divider { height: 4px !important; background: var(--ef-accent) !important; border-radius: 6px; margin: 0.5rem 0 0 !important; }
+
+.mantine-Badge-root[data-size="md"] {
+  top: calc(0.35rem * var(--ef-badge-scale)) !important;
+  left: calc(0.5rem * var(--mantine-scale) * var(--ef-badge-scale)) !important;
+  background: #11111a !important;
+  border: 1px solid var(--ef-accent) !important;
+  transform: scale(1.4) !important;
+  transform-origin: top left !important;
+  z-index: 100 !important;
+}
+.mantine-Badge-root[data-size="md"] .mantine-Badge-label { color: #fff !important; font-weight: 700 !important; }
+
+/* --- ANIMATED BACKGROUND --- */
+body::before, body::after {
+  content: ""; position: fixed; width: 250px; height: 250px; border-radius: 50%;
+  filter: blur(100px); pointer-events: none; z-index: 0; opacity: 0.5;
+}
+body::before { background: rgba(88, 101, 242, 0.4); top: 10%; left: 20%; animation: b1M 60s infinite alternate ease-in-out, b1B 6s infinite ease-in-out;; }
+body::after { background: rgba(114, 87, 242, 0.35); top: 60%; left: 70%; animation: b2M 80s infinite alternate ease-in-out, b2B 8s infinite ease-in-out;; }
+
+/* Animation Keyframes */
+@keyframes b1B { 0%, 100% {transform: scale(1); } 50% {transform: scale(1.2); } }
+
+@keyframes b2B { 0%, 100% {transform: scale(1); } 50% {transform: scale(1.25); } }
+
+@keyframes b1M { 0% {top:10%;left:20%} 20% {top:15%;left:50%} 40% {top:40%;left:30%} 60% {top:30%;left:60%} 80% {top:50%;left:25%} 100% {top:10%;left:20%}}
+@keyframes b2M { 0% {top:60%;left:70%} 20% {top:50%;left:50%} 40% {top:40%;left:80%} 60% {top:70%;left:60%} 80% {top:65%;left:75%} 100% {top:60%;left:70%}}
+
+/* --- ACCORDIONS & MISC --- */
+.mantine-Accordion-item, .mantine-Accordion-control { background: linear-gradient(0deg, #11111a 25%, #191927) !important; color: var(--ef-text) !important;}
+.mantine-Accordion-control:hover { background: rgba(88, 101, 242, 0.2) !important; }
+.mantine-InputWrapper-label { color: #fff !important; font-weight: 600; }
+.mantine-InputWrapper-description { color: var(--ef-dim-text) !important; font-size: 0.75rem !important; }
+.mantine-NumberInput-control { color: var(--ef-accent) !important; border-left: 1px solid var(--ef-border) !important; }

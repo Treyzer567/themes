@@ -1,0 +1,514 @@
+/* ****************************************************** */
+/* 1. THEME ENGINE (Dark & Light Modes)                   */
+/* ****************************************************** */
+
+:root {
+  --theme-bg: #f4f6f8;
+  --theme-card-bg: #ffffff;
+  --theme-card-glass: rgba(255, 255, 255, 0.7);
+  --theme-border: rgba(0, 0, 0, 0.08);
+  --theme-text: #1a1a2e;
+  --theme-text-muted: #6b7280;
+  --theme-accent: #5865f2;
+  --theme-accent-gradient: rgba(88, 101, 242, 0.15);
+  --theme-accent-glow: rgba(88, 101, 242, 0.3);
+  --theme-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --ease-spring: cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+html.dark {
+  --theme-bg: #0a0a0f;
+  --theme-card-bg: #11111a;
+  --theme-card-glass: rgba(17, 17, 26, 0.8);
+  --theme-border: rgba(255, 255, 255, 0.1);
+  --theme-text: #e6e6e6;
+  --theme-text-muted: #b3b3b3;
+  --theme-accent: #5865f2;
+  --theme-accent-gradient: rgba(88, 101, 242, 0.3);
+  --theme-accent-glow: rgba(88, 101, 242, 0.6);
+  --theme-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Base Body Application */
+body, #svelte, .bg-immich-bg, .bg-light {
+    background: var(--theme-bg) !important;
+    color: var(--theme-text) !important;
+}
+
+/* ****************************************************** */
+/* 2. LOGO & TOP NAV                                      */
+/* ****************************************************** */
+
+/* Fix: Logo Button Glow and Lift */
+a[href="/photos"] {
+    display: inline-block;
+    transition: transform 0.3s var(--ease-spring) !important;
+}
+
+a[href="/photos"]:hover {
+    transform: translateY(-3px) scale(1.05) !important;
+    filter: drop-shadow(0 0 10px var(--theme-accent-glow)) !important;
+}
+
+/* --- FIXED: MAIN BUTTONS (Excluding Toggles & Storage) --- */
+/* Added :not selectors to prevent stretching small UI elements */
+button[data-button-root="true"]:not([data-switch-root]):not(.storage-status button), 
+.bg-primary:not([data-switch-root] *):not(.storage-status *) {
+    min-height: 40px !important; 
+    background-color: var(--theme-accent) !important;
+    background-image: none !important; /* Ensures no blobs on buttons */
+    color: white !important;
+    border-radius: 12px !important;
+    border: 1px solid transparent !important;
+    transition: all 0.2s ease !important;
+}
+
+button[data-button-root="true"]:not([data-switch-root]):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px var(--theme-accent-glow);
+    filter: brightness(1.1);
+}
+
+/* --- THEMED TOGGLE SWITCHES (data-switch-root) --- */
+/* This ensures toggles stay small and match the theme */
+[data-switch-root] .bg-primary-100, 
+[data-switch-root] .dark\:bg-primary-200 {
+    background-color: var(--theme-card-glass) !important; /* Track background */
+    border: 1px solid var(--theme-border) !important;
+}
+
+[data-switch-root][data-state="checked"] .bg-primary-100,
+[data-switch-root][data-state="checked"] .dark\:bg-primary-200 {
+    background-color: var(--theme-accent-gradient) !important; /* Track when ON */
+    border-color: var(--theme-accent) !important;
+}
+
+[data-switch-root] .bg-primary {
+    background-image: none !important; /* Removes blobs from toggle thumb */
+    background-color: var(--theme-accent) !important; /* Thumb color */
+    min-height: 0 !important; /* Prevents the 40px stretch */
+    box-shadow: 0 0 5px rgba(0,0,0,0.3) !important;
+}
+
+/* --- STORAGE PROGRESS BAR (Targeted Fix) --- */
+.storage-status .bg-primary {
+    background-image: none !important; 
+    background-color: var(--theme-accent) !important;
+    height: 100% !important;
+    min-height: 0 !important; /* Prevents the 40px stretch */
+    border-radius: 9999px !important;
+}
+
+/* ****************************************************** */
+/* 3. SIDEBAR (Fixed for Settings & Library)              */
+/* ****************************************************** */
+
+/* Sidebar Container Background */
+aside, #sidebar, .bg-immich-dark-gray:has(nav) {
+    background: var(--theme-bg) !important;
+    border-right: 1px solid var(--theme-border) !important;
+}
+
+/* Sidebar Links (Normal State) */
+#sidebar a, aside a, nav a {
+    color: var(--theme-text-muted) !important;
+    transition: all 0.2s var(--ease-spring) !important;
+    margin: 4px 8px !important;
+    border-radius: 12px !important;
+    background: transparent !important;
+}
+
+/* Sidebar Links (Hover & Active/Settings Active) */
+#sidebar a:hover, aside a:hover,
+#sidebar .bg-gray-200, 
+aside .bg-gray-200,
+.dark .bg-immich-dark-primary\/10 {
+    background: var(--theme-accent-gradient) !important;
+    color: var(--theme-accent) !important;
+    transform: translateX(5px);
+    border: 1px solid var(--theme-border) !important;
+}
+
+/* Theme the sidebar buttons in Settings (Normal State) */
+a[href^="/admin/"], 
+a[href="/user-settings"],
+.dark .dark\:bg-gray-500 {
+    background-color: var(--theme-card-glass) !important;
+    border: 1px solid var(--theme-border) !important;
+    color: var(--theme-text-muted) !important;
+    transition: all 0.2s var(--ease-spring) !important;
+}
+
+/* Theme the Active/Hover state for Settings Sidebar Buttons */
+a[href^="/admin/"]:hover, 
+a[href="/user-settings"]:hover,
+a[aria-current="page"] {
+    background-color: var(--theme-accent-gradient) !important;
+    border-color: var(--theme-accent) !important;
+    color: var(--theme-accent) !important;
+    transform: translateX(4px);
+}
+
+/* --- EMPTY FAVORITES PLACEHOLDER --- */
+/* Targets the container for 'Add favorites to quickly find...' */
+div.w-1\/2.mt-10.mx-auto.flex-col.rounded-3xl {
+    background: var(--theme-card-bg) !important;
+    border: 1px solid var(--theme-border) !important;
+    box-shadow: var(--theme-shadow) !important;
+    border-radius: 24px !important;
+    backdrop-filter: blur(10px);
+}
+
+/* Theme the text inside */
+div.w-1\/2.mt-10.mx-auto.flex-col.rounded-3xl p {
+    color: var(--theme-text) !important;
+    opacity: 0.8;
+}
+
+/* Optional: Adjust image brightness in dark mode */
+html.dark div.w-1\/2.mt-10.mx-auto.flex-col.rounded-3xl img {
+    opacity: 0.8;
+    filter: brightness(0.9);
+}
+
+/* ****************************************************** */
+/* 4. ACCOUNT PANEL & DROPDOWNS                           */
+/* ****************************************************** */
+
+/* Fix: Account Panel Background (No longer transparent) */
+#account-info-panel, 
+#account-info-panel > div {
+    background: var(--theme-card-bg) !important;
+    border: 1px solid var(--theme-border) !important;
+    opacity: 1 !important;
+    box-shadow: var(--theme-shadow) !important;
+}
+
+/* Fix: 3-Dot Dropdown / Context Menus */
+ul[role="menu"], .fixed.min-w-50 {
+    background: var(--theme-card-bg) !important;
+    border: 1px solid var(--theme-border) !important;
+    border-radius: 12px !important;
+    box-shadow: var(--theme-shadow) !important;
+    overflow: hidden !important;
+}
+
+ul[role="menu"] li {
+    background: transparent !important;
+    color: var(--theme-text) !important;
+    transition: all 0.2s ease !important;
+}
+
+ul[role="menu"] li:hover {
+    background: var(--theme-accent-gradient) !important;
+    color: var(--theme-accent) !important;
+}
+
+/* Add hover effects to Account/Admin Panel Buttons */
+#account-info-panel a, 
+#account-info-panel button,
+a[href="/admin/system-settings"],
+a[href="/user-settings"] {
+    transition: all 0.2s var(--ease-spring) !important;
+}
+
+#account-info-panel a:hover, 
+#account-info-panel button:hover,
+a[href="/admin/system-settings"]:hover,
+a[href="/user-settings"]:hover {
+    background-color: var(--theme-accent) !important;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--theme-accent-glow);
+    border-color: var(--theme-accent) !important;
+}
+
+/* ****************************************************** */
+/* 5. SEARCH BARS                                         */
+/* ****************************************************** */
+
+#main-search-bar, input[type="text"] {
+    background: var(--theme-card-glass) !important;
+    border: 1px solid var(--theme-border) !important;
+    color: var(--theme-text) !important;
+    border-radius: 12px !important;
+}
+
+#main-search-bar:focus {
+    border-color: var(--theme-accent) !important;
+    background: var(--theme-card-bg) !important;
+}
+
+/* Match Settings Search to Main Search Bar */
+div:has(> input[placeholder="Search settings"]) {
+    background: var(--theme-card-glass) !important;
+    border: 1px solid var(--theme-border) !important;
+    border-radius: 12px !important;
+    padding: 4px !important; /* Centers the inner input */
+}
+
+input[placeholder="Search settings"] {
+    height: 48px !important; /* Increases height to match main search */
+    background: transparent !important; /* Let the container handle the background */
+    color: var(--theme-text) !important;
+    padding-left: 12px !important;
+}
+
+input[placeholder="Search settings"]:focus {
+    outline: none !important;
+}
+
+/* ****************************************************** */
+/* 6. STORAGE & TABLES                                    */
+/* ****************************************************** */
+
+.storage-status {
+    background: var(--theme-card-bg) !important;
+    border: 1px solid var(--theme-border) !important;
+    margin: 10px !important;
+}
+
+/* Usage & User Tables */
+table tr {
+    background: var(--theme-card-glass) !important;
+    border-bottom: 1px solid var(--theme-border) !important;
+}
+
+/* Remove default background gradients and fix the storage bar */
+.storage-status .bg-primary {
+    background-image: none !important;
+    background-color: var(--theme-accent) !important;
+    height: 100% !important;
+    box-shadow: 0 0 8px var(--theme-accent-glow) !important;
+}
+
+/* Ensure the progress bar track is slim and themed */
+.storage-status .h-1.75 {
+    height: 8px !important;
+    background-color: var(--theme-border) !important;
+    border-radius: 9999px !important;
+    overflow: hidden !important;
+}
+
+/* Ensure the main storage card background is solid to block underlying blobs */
+.storage-status {
+    background: var(--theme-card-bg) !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* --- JOB QUEUE CARDS --- */
+/* Target the main card container */
+.flex-col.overflow-hidden.rounded-2xl:has(a[href^="/admin/queues/"]) {
+    background: var(--theme-card-bg) !important;
+    border: 1px solid var(--theme-border) !important;
+    box-shadow: var(--theme-shadow);
+    transition: transform 0.2s var(--ease-spring);
+}
+
+.flex-col.overflow-hidden.rounded-2xl:has(a[href^="/admin/queues/"]):hover {
+    transform: translateY(-4px);
+    border-color: var(--theme-accent);
+}
+
+/* --- ACTIVE / WAITING COUNTERS --- */
+/* "Active" section (Left/Top side) */
+.bg-immich-primary, .dark\:bg-immich-dark-primary {
+    background-color: var(--theme-accent) !important;
+    color: white !important;
+}
+
+/* "Waiting" section (Right/Bottom side) */
+.bg-gray-200, .dark\:bg-gray-700 {
+    background-color: var(--theme-card-glass) !important;
+    border: 1px solid var(--theme-border) !important;
+    color: var(--theme-text-muted) !important;
+}
+
+/* Fix text colors inside the counters */
+.text-immich-dark-bg, .dark\:text-immich-gray {
+    color: var(--theme-text) !important;
+}
+
+/* --- SIDE ACTION BUTTONS (All / Missing) --- */
+/* These are the buttons on the right side of the card */
+.flex.w-full.flex-row.overflow-hidden button {
+    background-color: var(--theme-card-glass) !important;
+    border: 1px solid var(--theme-border) !important;
+    color: var(--theme-text-muted) !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Hover effect for queue buttons */
+.flex.w-full.flex-row.overflow-hidden button:hover {
+    background-color: var(--theme-accent) !important;
+    color: white !important;
+}
+
+/* --- MISC ICONS & LINKS --- */
+.text-primary, a.text-primary {
+    color: var(--theme-accent) !important;
+}
+
+/* Large detail icons inside cards */
+svg.text-primary, svg.dark\:text-immich-dark-primary {
+    filter: drop-shadow(0 0 5px var(--theme-accent-glow));
+}
+
+
+/* --- EXTERNAL LIBRARY PLACEHOLDER CARDS --- */
+/* Targets the large 'Create an external library' button/card */
+button.w-full.mt-10.mx-auto.flex-col {
+    background: var(--theme-card-bg) !important;
+    border: 1px solid var(--theme-border) !important;
+    border-radius: 24px !important; /* Matches the rounded-3xl look */
+    transition: all 0.3s var(--ease-spring) !important;
+    box-shadow: var(--theme-shadow) !important;
+}
+
+/* Hover effect: Subtle lift and glow */
+button.w-full.mt-10.mx-auto.flex-col:hover {
+    transform: translateY(-5px);
+    background: var(--theme-card-glass) !important;
+    border-color: var(--theme-accent) !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 15px var(--theme-accent-glow) !important;
+}
+
+/* Theme the text inside the placeholder */
+button.w-full.mt-10.mx-auto.flex-col p {
+    color: var(--theme-text) !important;
+    opacity: 0.8;
+    font-weight: 400 !important;
+}
+
+/* Adjust the SVG/Image brightness for dark mode */
+html.dark button.w-full.mt-10.mx-auto.flex-col img {
+    filter: brightness(0.8) alternate-hue(10deg);
+    opacity: 0.9;
+}
+
+/* ****************************************************** */
+/* 7. GRID BEAUTIFICATION                                 */
+/* ****************************************************** */
+
+[data-asset-id] {
+    border-radius: 12px !important;
+    transition: transform 0.3s var(--ease-spring), box-shadow 0.3s var(--ease-spring) !important;
+}
+
+[data-asset-id]:hover {
+    transform: translateY(-5px) scale(1.02) !important;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.4), 0 0 10px var(--theme-accent-glow) !important;
+    z-index: 50;
+}
+
+[data-asset-id] img {
+    transition: transform 0.5s ease !important;
+}
+
+[data-asset-id]:hover img {
+    transform: scale(1.1) !important;
+}
+
+/* --- FIXED: ALBUM SEARCH BAR --- */
+/* 1. Force the input to fill the container height */
+input[placeholder="Search albums"] {
+    height: 100% !important;
+    min-height: 38px !important; /* Ensures it matches the h-10 container */
+    background: transparent !important;
+    color: var(--theme-text) !important;
+    border: none !important;
+    padding-left: 8px !important;
+}
+
+/* 2. Theme the container holding the search bar */
+.xl\:w-60 .bg-gray-200, 
+.2xl\:w-80 .bg-gray-200 {
+    background: var(--theme-card-glass) !important;
+    border: 1px solid var(--theme-border) !important;
+    backdrop-filter: blur(10px);
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* --- FIXED: STATUS TOGGLES (All / Owned / Shared) --- */
+/* 1. Theme the container pill */
+fieldset.dark\:bg-immich-dark-gray {
+    background: var(--theme-card-glass) !important;
+    border: 1px solid var(--theme-border) !important;
+    padding: 2px !important;
+    gap: 2px !important;
+}
+
+/* 2. Reset Default State (Unselected) - Fixes "Always Blue" */
+fieldset label {
+    background: transparent !important; /* Force transparent background */
+    color: var(--theme-text-muted) !important;
+    border-radius: 12px !important; /* Smooth corners */
+    transition: all 0.2s ease !important;
+    box-shadow: none !important; /* Remove any lingering glows */
+}
+
+/* 3. Selected State - Only THIS one gets the blue accent */
+fieldset input:checked + label {
+    background: var(--theme-accent) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    box-shadow: 0 2px 10px var(--theme-accent-glow) !important;
+}
+
+/* 4. Hover State (for unselected items) */
+fieldset input:not(:checked) + label:hover {
+    background: var(--theme-accent-gradient) !important;
+    color: var(--theme-accent) !important;
+}
+
+/* --- CREATE ALBUM PLACEHOLDER --- */
+/* Matches the style of the external library card */
+button.w-1\/2.mt-10.mx-auto.flex-col {
+    background: var(--theme-card-bg) !important;
+    border: 1px solid var(--theme-border) !important;
+    border-radius: 24px !important;
+    box-shadow: var(--theme-shadow) !important;
+    transition: all 0.3s var(--ease-spring);
+}
+
+button.w-1\/2.mt-10.mx-auto.flex-col:hover {
+    transform: translateY(-5px);
+    border-color: var(--theme-accent) !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3), 0 0 15px var(--theme-accent-glow) !important;
+}    
+
+/* Hover state: Glows nicely without breaking the layout */
+button[aria-label="Expand"]:hover {
+    background: var(--theme-accent-gradient) !important;
+    color: var(--theme-accent) !important;
+    transform: scale(1.1);
+}
+
+/* --- FIXED: ACCORDION / EXPAND BUTTONS --- */
+/* Target the expand button in normal, hover, and active states */
+button[aria-label="Expand"],
+button[aria-label="Collapse"] {
+    background: transparent !important;
+    color: var(--theme-text-muted) !important;
+    border-radius: 8px !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Hover State */
+button[aria-label="Expand"]:hover,
+button[aria-label="Collapse"]:hover {
+    background: var(--theme-accent-gradient) !important;
+    color: var(--theme-accent) !important;
+    transform: scale(1.1);
+}
+
+/* Active/Open State - Ensures it doesn't revert to grey */
+button[aria-label="Expand"][aria-expanded="true"],
+button[aria-label="Collapse"][aria-expanded="true"],
+button[aria-label="Expand"]:active {
+    background: var(--theme-accent-gradient) !important;
+    color: var(--theme-accent) !important;
+    box-shadow: 0 0 8px var(--theme-accent-glow);
+}
