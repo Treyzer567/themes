@@ -45,6 +45,8 @@ themes/
 2. Paste the contents of `homarr-desktop-theme.css` or `homarr-mobile-theme.css`
 3. Save
 
+*note that when using the mobile theme, do not set a page title or do | but instead use a logo with the name added to the side of it. That is what I use and what was used for spacing.
+
 > You will need to make a desktop board and a mobile board to apply each one respectively.
 
 ### BookStack
